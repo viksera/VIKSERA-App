@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:viksera/config/themes/app_themes.dart';
-import 'package:viksera/features/home/presentation/screens/business_owner_home/buisiness_owner_home_screen.dart';
+import 'features/home/presentation/screens/business_owner_search/business_owner_search_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Viksera',
       theme: AppThemes.buildThemeData(),
-      home: const BusinessOwnerHomeScreen(),
+      home: const BusinessOwnerSearchScreen(),
     );
   }
 }
