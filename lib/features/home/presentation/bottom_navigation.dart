@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/common_widgets/custom_bottom_navigation_bar.dart';
@@ -23,6 +24,7 @@ class BottomNavigation extends StatelessWidget {
         builder: (context, index) {
           var cubit = context.read<BottomNavigationCubit>();
           return PersistentTabView(
+            onItemSelected: (value) {},
             context,
             backgroundColor: AppColors.appBackgroundColor,
             screens: businessOwnerScreens,
@@ -32,13 +34,13 @@ class BottomNavigation extends StatelessWidget {
                   icon: const Icon(Icons.home)),
               PersistentBottomNavBarItem(
                   activeColorPrimary: AppColors.pureBlack,
-                  icon: Icon(Icons.post_add)),
+                  icon: const Icon(Icons.post_add)),
               PersistentBottomNavBarItem(
                   activeColorPrimary: AppColors.pureBlack,
-                  icon: Icon(Icons.wechat_outlined)),
+                  icon: const Icon(Icons.wechat_outlined)),
               PersistentBottomNavBarItem(
                   activeColorPrimary: AppColors.pureBlack,
-                  icon: Icon(Icons.account_circle))
+                  icon: const Icon(Icons.account_circle))
             ],
           );
         },

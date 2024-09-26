@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/constants/app_assets.dart';
@@ -29,14 +30,14 @@ class InfluencerCard extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                AppAssets.influencer,
-                fit: BoxFit.cover,
-              ),
+              child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageUrl:
+                      'https://images.pexels.com/photos/3296547/pexels-photo-3296547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
             ),
           ),
           Text(
-            'Liza summer',
+            'Cotton bro studio',
             style: AppStyles.style14.copyWith(
                 color: AppColors.pureWhite, fontWeight: FontWeight.w700),
           ).width(80).positioned(bottom: 20, left: 11)

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:viksera/features/home/presentation/cubits/business_owner_home/bu
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/category_card.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/influencer_card.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/marketing_agency_card.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class BusinessOwnerHomeScreen extends StatelessWidget {
   const BusinessOwnerHomeScreen({super.key});
@@ -30,6 +32,11 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
     'Food & Drinks',
     'Lifestyle',
     'Health',
+  ];
+  static const List<String> banners = [
+    'https://i.graphicmama.com/blog/wp-content/uploads/2019/10/01134923/cute-sweet-social-media-ad-banner-campaign-example.jpg',
+    'https://1.bp.blogspot.com/-LDkA_ligh38/X6fEm7HCoOI/AAAAAAAAFYQ/m8STkDBuvWIyHVLd7GGGjrztK8z6iuEqQCLcBGAsYHQ/s16000/1755.jpg',
+    'https://email.uplers.com/blog/wp-content/uploads/2023/03/Banner-Ad-Examples-to-Get-You-Inspired-1024x411.png'
   ];
   @override
   Widget build(BuildContext context) {
@@ -56,8 +63,8 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                       ),
                       const CircleAvatar(
                         radius: 20,
-                        backgroundImage:
-                            AssetImage(AppAssets.businessOwnerImage),
+                        backgroundImage: CachedNetworkImageProvider(
+                            'https://images.pexels.com/photos/943084/pexels-photo-943084.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                       )
                     ],
                   ),
@@ -86,7 +93,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                       alignment: AlignmentDirectional.bottomCenter,
                       children: [
                         CarouselSlider.builder(
-                          itemCount: 5,
+                          itemCount: banners.length,
                           carouselController: carouselSliderController,
                           disableGesture: true,
                           options: CarouselOptions(
@@ -98,8 +105,9 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                               height: 185),
                           itemBuilder: (context, index, realIndex) => Container(
                             decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                    image: AssetImage(AppAssets.banner),
+                                image: DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                        banners[index]),
                                     fit: BoxFit.fill),
                                 color: AppColors.appPrimaryColor,
                                 borderRadius: BorderRadius.circular(
@@ -111,7 +119,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            for (int i = 0; i < 5; i++)
+                            for (int i = 0; i < banners.length; i++)
                               Container(
                                       width: state.bannerIndex == i ? 25 : 10,
                                       decoration: BoxDecoration(
@@ -167,7 +175,6 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                         const MarketingAgencyCard(),
                     itemCount: 5,
                   ).height(134),
-                  90.heightBox,
                 ],
               ).pSymmetric(horizontal: 16),
             ),
