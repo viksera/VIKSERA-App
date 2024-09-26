@@ -10,8 +10,8 @@ class AppThemes {
         scaffoldBackgroundColor: AppColors.pureWhite,
         textTheme: base.textTheme.apply(
           fontFamily: 'Quicksand',
-          displayColor: AppColors.pureBlack,
-          bodyColor: AppColors.pureBlack,
+          displayColor: AppColors.appDarkGreenColor,
+          bodyColor: AppColors.appDarkGreenColor,
         ),
         inputDecorationTheme: inputDecorationTheme());
   }
