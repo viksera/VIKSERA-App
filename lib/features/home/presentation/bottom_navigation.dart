@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:motion_tab_bar/MotionTabBar.dart';
+import 'package:motion_tab_bar/MotionTabBarController.dart';
 import 'package:viksera/config/colors/app_colors.dart';
-import 'package:viksera/core/common_widgets/custom_bottom_navigation_bar.dart';
-import 'package:viksera/core/extensions/app_extensions.dart';
+import 'package:viksera/core/common_widgets/custom_ticker_provider.dart';
 import 'package:viksera/features/home/presentation/cubits/bottom_navigation_cubit.dart';
-import 'package:viksera/features/home/presentation/screens/business_owner_home/buisiness_owner_home_screen.dart';
 
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({super.key});
-  static final List<Widget> businessOwnerScreens = [
-    BusinessOwnerHomeScreen(),
-    BusinessOwnerHomeScreen(),
-    BusinessOwnerHomeScreen(),
-    BusinessOwnerHomeScreen(),
-  ];
+  final Widget child;
+  const BottomNavigation({super.key, required this.child});
+  static final MotionTabBarController motionTabBarController =
+      MotionTabBarController(
+          length: 4, vsync: CustomTickerProvider(), initialIndex: 0);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -23,25 +19,31 @@ class BottomNavigation extends StatelessWidget {
       child: BlocBuilder<BottomNavigationCubit, int>(
         builder: (context, index) {
           var cubit = context.read<BottomNavigationCubit>();
-          return PersistentTabView(
-            onItemSelected: (value) {},
-            context,
-            backgroundColor: AppColors.appBackgroundColor,
-            screens: businessOwnerScreens,
-            items: [
-              PersistentBottomNavBarItem(
-                  activeColorPrimary: AppColors.pureBlack,
-                  icon: const Icon(Icons.home)),
-              PersistentBottomNavBarItem(
-                  activeColorPrimary: AppColors.pureBlack,
-                  icon: const Icon(Icons.post_add)),
-              PersistentBottomNavBarItem(
-                  activeColorPrimary: AppColors.pureBlack,
-                  icon: const Icon(Icons.wechat_outlined)),
-              PersistentBottomNavBarItem(
-                  activeColorPrimary: AppColors.pureBlack,
-                  icon: const Icon(Icons.account_circle))
-            ],
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: MotionTabBar(
+              controller: motionTabBarController,
+              tabSize: 40,
+              tabBarHeight: 60,
+              initialSelectedTab: "HOME",
+              tabSelectedColor: AppColors.appPrimaryColor,
+              labels: const [
+                "HOME",
+                "EXPLORE",
+                "PROFILE",
+                "SETTINGS"
+              ], // TODO : Dummy data in List
+              icons: const [
+                Icons.home,
+                Icons.post_add,
+                Icons.people_alt,
+                Icons.settings
+              ], // TODO : Dummy data in List
+              onTabItemSelected: (int index) {
+                cubit.onIconClicked(index);
+                // TODO : Need to implement redirection function
+              },
+            ),
           );
         },
       ),

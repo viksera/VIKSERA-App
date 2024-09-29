@@ -13,7 +13,7 @@ final GoRouter router = GoRouter(
     ShellRoute(
         navigatorKey: _shellKey,
         pageBuilder: (context, state, child) =>
-            const NoTransitionPage(child: BottomNavigation()),
+            NoTransitionPage(child: BottomNavigation(child: child)),
         routes: [
           GoRoute(
             path: '/business-owner-home',
