@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 extension MediaQueryExt on BuildContext {
@@ -124,4 +126,21 @@ extension PositionedExtension on Widget {
   }) =>
       Positioned(
           top: top, bottom: bottom, right: right, left: left, child: this);
+}
+
+extension PlatformExt on BuildContext {
+  bool get isWeb => kIsWeb;
+
+  bool get isAndroid => !kIsWeb && Platform.isAndroid;
+
+  bool get isIOS => !kIsWeb && Platform.isIOS;
+
+  bool get isIPad {
+    final width = mqSize.width;
+    return isIOS && width >= 768;
+  }
+
+  bool get isMobile => !isWeb && (isIOS || isAndroid);
+
+  bool get isLargeScreen => width > 1024;
 }
