@@ -4,14 +4,19 @@ import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 
 class WidgetHelper {
-  static Ink squareIcon({required IconData icon}) => Ink(
-        decoration: cardDecoration(),
-        height: 48,
-        width: 48,
-        child: Icon(
-          icon,
-          color: AppColors.appDarkGreenColor,
-        ).wrapCenter(),
+  static InkWell squareIconButton(
+          {required IconData icon, required VoidCallback onTap}) =>
+      InkWell(
+        onTap: onTap,
+        child: Ink(
+          decoration: cardDecoration(),
+          height: 48,
+          width: 48,
+          child: Icon(
+            icon,
+            color: AppColors.appDarkGreenColor,
+          ).wrapCenter(),
+        ),
       );
   static BoxDecoration cardDecoration() => BoxDecoration(
           color: AppColors.appBackgroundColor,

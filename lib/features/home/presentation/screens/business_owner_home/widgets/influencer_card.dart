@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
-import 'package:viksera/config/constants/app_assets.dart';
 import 'package:viksera/config/typography/app_styles.dart';
-import 'package:viksera/core/common_widgets/common_progress_indicator.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 
 class InfluencerCard extends StatelessWidget {
@@ -33,11 +31,11 @@ class InfluencerCard extends StatelessWidget {
               child: CachedNetworkImage(
                   fit: BoxFit.cover,
                   imageUrl:
-                      'https://images.pexels.com/photos/3296547/pexels-photo-3296547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                      'https://images.pexels.com/photos/3296547/pexels-photo-3296547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'), // TODO: Dummy data
             ),
           ),
           Text(
-            'Cotton bro studio',
+            'Cotton bro studio', // TODO: Dummy data
             style: AppStyles.style14.copyWith(
                 color: AppColors.pureWhite, fontWeight: FontWeight.w700),
           ).width(80).positioned(bottom: 20, left: 11)

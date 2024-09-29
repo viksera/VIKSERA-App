@@ -11,7 +11,7 @@ class CommonCircularProgressIndicator extends StatelessWidget {
     super.key,
     this.progress,
     this.color = AppColors.appPrimaryColor,
-    this.radius = 45,
+    this.radius = 90,
   });
 
   final double? progress;
@@ -20,6 +20,6 @@ class CommonCircularProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) => Center(
         child: CircularProgressIndicator(
                 strokeWidth: 1.5, value: progress, color: color)
-            .widthHeight(radius, radius),
+            .widthHeight(radius / 2, radius / 2),
       );
 }

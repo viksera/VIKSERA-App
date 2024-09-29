@@ -15,6 +15,7 @@ class CustomTextField<B extends StateStreamable<S>, S> extends StatelessWidget {
   final bool boxShadow;
   final TextStyle? textStyle;
   final TextStyle? hintStyle;
+  final void Function(String, B)? onSubmitted;
   const CustomTextField(
       {super.key,
       this.buildWhen,
@@ -23,6 +24,7 @@ class CustomTextField<B extends StateStreamable<S>, S> extends StatelessWidget {
       this.hintStyle,
       this.onChanged,
       this.onErrorChanged,
+      this.onSubmitted,
       this.boxShadow = false,
       this.prefixIcon,
       this.paddingX = 16,
@@ -48,6 +50,8 @@ class CustomTextField<B extends StateStreamable<S>, S> extends StatelessWidget {
             ),
             onChanged: (value) => onChanged?.call(value, context.read<B>()),
             onTapOutside: (event) => FocusScope.of(context).unfocus(),
+            onFieldSubmitted: (value) =>
+                onSubmitted?.call(value, context.read<B>()),
           ),
         );
       },
