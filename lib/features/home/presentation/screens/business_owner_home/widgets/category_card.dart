@@ -21,9 +21,7 @@ class CategoryCard extends StatelessWidget {
           image: const DecorationImage(
               fit: BoxFit.cover,
               image: CachedNetworkImageProvider(
-                  'https://tse4.mm.bing.net/th?id=OIP.kTvs-fiEdCw7rldk41rhKwHaEo&pid=Api&P=0&h=180'),
-
-              /// TODO: Dummy data
+                  'https://tse4.mm.bing.net/th?id=OIP.kTvs-fiEdCw7rldk41rhKwHaEo&pid=Api&P=0&h=180'), // TODO: Dummy data
               opacity: 0.2)),
       child: Text(
         title.toUpperCase(),
