@@ -4,26 +4,37 @@ import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/core/widget_helper/widget_helper.dart';
 import '../../../../../core/common_widgets/custom_text_field.dart';
-import '../../cubits/business_owner_home/business_owner_home_cubit.dart';
+import '../../cubits/buisiness_owner_search/business_owner_search_cubit.dart';
+import '../../cubits/business_owner_search_filter/business_owner_search_filter_cubit.dart';
+import '../../widgets/filter_sidebar.dart';
 import '../../widgets/influencers_grid.dart';
 import '../../widgets/marketing_agencies_grid.dart';
-//! This is the business owner search screen came when BusinessOwner click on search icon in the BusinessOwnerHomeScreen
+
+//! This is the business owner search screen came when BusinessOwner clicks on search icon in the BusinessOwnerHomeScreen
 class BusinessOwnerSearchScreen extends StatelessWidget {
   const BusinessOwnerSearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BusinessOwnerHomeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => BusinessOwnerSearchCubit(),
+        ),
+        BlocProvider(
+          create: (context) => BusinessOwnerSearchFilterCubit(),
+        ),
+      ],
       child: DefaultTabController(
         length: 2,
         child: Scaffold(
+          drawer: FilterSidebar(),
           appBar: AppBar(
             leading: const BackButton(
               color: AppColors.pureBlack,
             ),
-            title:
-                CustomTextField<BusinessOwnerHomeCubit, BusinessOwnerHomeState>(
+            title: CustomTextField<BusinessOwnerSearchCubit,
+                BusinessOwnerSearchState>(
               hintText: "Search...",
               onChanged: (value, cubit) {
                 cubit.onSearchTextChanged(value);
@@ -34,11 +45,13 @@ class BusinessOwnerSearchScreen extends StatelessWidget {
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: GestureDetector(
-                  onTap: () {
-                    // TODO: Implement filter functionality
-                  },
-                  child: WidgetHelper.squareIcon(icon: Icons.filter_list),
+                child: Builder(
+                  builder: (context) => GestureDetector(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: WidgetHelper.squareIcon(icon: Icons.tune),
+                  ),
                 ),
               ),
             ],

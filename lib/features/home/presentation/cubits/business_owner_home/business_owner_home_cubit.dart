@@ -9,10 +9,4 @@ class BusinessOwnerHomeCubit extends Cubit<BusinessOwnerHomeState> {
     emit(state.copyWith(bannerIndex: index));
   }
 
-  void onSearchTextChanged(String? value) {
-    // if (value.isNotEmpty) {
-    emit(state.copyWith(searchText: value));
-    print(state.searchText);
-    // }
-  }
 }

@@ -1,5 +1,5 @@
 import '../../domain/entities/business_profile.dart';
-import '../../domain/repositories/buisiness_owner_repository.dart';
+import '../../domain/repositories/buisiness_profile_repository.dart';
 import '../datasources/buisiness_profile_api.dart';
 
 class BusinessProfileRepositoryImpl implements BusinessProfileRepository {
