@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:viksera/features/auth/presentation/screens/user_selection/user_selection_screen.dart';
 import 'package:viksera/features/categories/presentation/screens/categories/categories_screen.dart';
 import 'package:viksera/features/chats/presentation/screens/chats/chats_screen.dart';
 import 'package:viksera/features/home/presentation/bottom_navigation.dart';
@@ -12,16 +13,22 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final _shellKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
-  initialLocation: '/home',
+  initialLocation: '/user',
   navigatorKey: navigatorKey,
   routes: [
+    GoRoute(
+      path: '/user',
+      name: Routes.userSelection,
+      pageBuilder: (context, state) =>
+          const NoTransitionPage(child: UserSelectionScreen()),
+    ),
     ShellRoute(
       navigatorKey: _shellKey,
-      pageBuilder: (context, state, child) =>
-          NoTransitionPage(child: BottomNavigation(child: child)),
+      pageBuilder: (context, state, child) => NoTransitionPage(
+          child: BottomNavigation(isBusinessOwner: true, child: child)),
       routes: [
         GoRoute(
-          path: '/home',
+          path: '/business-owner-home',
           name: Routes.businessOwnerHome,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: BusinessOwnerHomeScreen()),
@@ -53,7 +60,7 @@ final GoRouter router = GoRouter(
               const NoTransitionPage(child: ChatsScreen()),
         ),
         GoRoute(
-          path: '/settings',
+          path: '/business-owner-settings',
           name: Routes.businessOwnerSettings,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: SettingsScreen()),
@@ -62,17 +69,29 @@ final GoRouter router = GoRouter(
     ),
     ShellRoute(
       navigatorKey: _shellKey,
-      pageBuilder: (context, state, child) =>
-          NoTransitionPage(child: BottomNavigation(child: child)),
+      pageBuilder: (context, state, child) => NoTransitionPage(
+          child: BottomNavigation(isBusinessOwner: false, child: child)),
       routes: [
         GoRoute(
-          path: '/home',
+          path: '/influencer-home',
           name: Routes.influencerHome,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: InfluencerHomeScreen()),
         ),
         GoRoute(
-          path: '/settings',
+          path: '/influencer-categories',
+          name: Routes.influencerCategories,
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: CategoriesScreen()),
+        ),
+        GoRoute(
+          path: '/influencer-chats',
+          name: Routes.influencerChats,
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: ChatsScreen()),
+        ),
+        GoRoute(
+          path: '/influencer-settings',
           name: Routes.influencerSettings,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: SettingsScreen()),
@@ -83,7 +102,10 @@ final GoRouter router = GoRouter(
 );
 
 class Routes {
-  //business owner
+  // Basic
+  static const userSelection = 'user_selection';
+
+  // Business owner
   static const businessOwnerHome = 'business_owner_home';
   static const businessOwnerCategories = 'business_owner_categories';
   static const businessOwnerChats = 'business_owner_chats';
@@ -92,7 +114,9 @@ class Routes {
       'settings_from_business_owner_home';
   static const searchFromBusinessOwnerHome = 'search_from_business_owner_home';
 
-  //influencer
+  // Influencer
   static const influencerHome = 'influencer_home';
   static const influencerSettings = 'influencer_settings';
+  static const influencerCategories = 'influencer_categories';
+  static const influencerChats = 'influencer_chats';
 }

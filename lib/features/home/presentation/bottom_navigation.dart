@@ -10,7 +10,9 @@ import 'package:go_router/go_router.dart';
 
 class BottomNavigation extends StatelessWidget {
   final Widget child;
-  const BottomNavigation({super.key, required this.child});
+  final bool isBusinessOwner;
+  const BottomNavigation(
+      {super.key, required this.child, required this.isBusinessOwner});
   static final MotionTabBarController motionTabBarController =
       MotionTabBarController(
           length: 4, vsync: CustomTickerProvider(), initialIndex: 0);
@@ -44,18 +46,26 @@ class BottomNavigation extends StatelessWidget {
       ),
     );
   }
-}
 
-String redirectTo(int index) {
-  switch (index) {
-    case 0:
-      return Routes.businessOwnerHome;
-    case 1:
-      return Routes.businessOwnerCategories;
-    case 2:
-      return Routes.businessOwnerChats;
-    case 3:
-      return Routes.businessOwnerSettings;
+  String redirectTo(int index) {
+    switch (index) {
+      case 0:
+        return isBusinessOwner
+            ? Routes.businessOwnerHome
+            : Routes.influencerHome;
+      case 1:
+        return isBusinessOwner
+            ? Routes.businessOwnerCategories
+            : Routes.influencerCategories;
+      case 2:
+        return isBusinessOwner
+            ? Routes.businessOwnerChats
+            : Routes.influencerChats;
+      case 3:
+        return isBusinessOwner
+            ? Routes.businessOwnerSettings
+            : Routes.influencerSettings;
+    }
+    return isBusinessOwner ? Routes.businessOwnerHome : Routes.influencerHome;
   }
-  return Routes.businessOwnerHome;
 }
