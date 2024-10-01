@@ -55,7 +55,7 @@ String redirectTo(int index) {
     case 2:
       return Routes.businessOwnerChats;
     case 3:
-      return Routes.businessOwnerHome;
+      return Routes.businessOwnerSettings;
   }
   return Routes.businessOwnerHome;
 }
