@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/typography/app_styles.dart';
 import 'package:viksera/core/common_widgets/custom_text_field.dart';
