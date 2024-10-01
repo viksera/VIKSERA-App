@@ -6,6 +6,7 @@ import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/core/widget_helper/widget_helper.dart';
 
 class SettingsButton extends StatelessWidget {
+  final bool isLogout;
   final VoidCallback onTap;
   final IconData icon;
   final String text;
@@ -14,6 +15,7 @@ class SettingsButton extends StatelessWidget {
     required this.onTap,
     required this.icon,
     required this.text,
+    this.isLogout = false,
   });
 
   @override
@@ -30,16 +32,24 @@ class SettingsButton extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(icon, color: AppColors.appPrimaryColor),
+                Icon(icon,
+                    color: isLogout
+                        ? AppColors.pureRed
+                        : AppColors.appPrimaryColor),
                 23.widthBox,
                 Text(
                   text,
-                  style:
-                      AppStyles.style18.copyWith(fontWeight: FontWeight.w500),
+                  style: AppStyles.style18.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: isLogout
+                          ? AppColors.pureRed
+                          : AppColors.appPrimaryColor),
                 )
               ],
             ),
-            Icon(Icons.keyboard_arrow_right, color: AppColors.appPrimaryColor)
+            if (!isLogout)
+              const Icon(Icons.keyboard_arrow_right,
+                  color: AppColors.appPrimaryColor)
           ],
         ),
       ),

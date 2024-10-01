@@ -74,7 +74,15 @@ class SettingsScreen extends StatelessWidget {
                       // TODO : Implement redirect function
                     },
                     icon: Icons.star,
-                    text: 'Rate Us')
+                    text: 'Rate Us'),
+                16.heightBox,
+                SettingsButton(
+                    onTap: () {
+                      // TODO : Implement redirect function
+                    },
+                    icon: Icons.logout,
+                    isLogout: true,
+                    text: 'Log out')
               ],
             )
           ],
