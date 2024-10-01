@@ -106,8 +106,8 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                       13.widthBox,
                       WidgetHelper.squareIconButton(
                         icon: Icons.settings,
-                        onTap: () =>
-                            context.goNamed(Routes.searchFromBusinessOwnerHome),
+                        onTap: () => context
+                            .goNamed(Routes.settingsFromBusinessOwnerHome),
                       )
                     ],
                   ),

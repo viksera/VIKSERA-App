@@ -35,7 +35,7 @@ class SettingsButton extends StatelessWidget {
                 Icon(icon,
                     color: isLogout
                         ? AppColors.pureRed
-                        : AppColors.appPrimaryColor),
+                        : AppColors.appDarkGreenColor),
                 23.widthBox,
                 Text(
                   text,
@@ -43,13 +43,13 @@ class SettingsButton extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       color: isLogout
                           ? AppColors.pureRed
-                          : AppColors.appPrimaryColor),
+                          : AppColors.appDarkGreenColor),
                 )
               ],
             ),
             if (!isLogout)
               const Icon(Icons.keyboard_arrow_right,
-                  color: AppColors.appPrimaryColor)
+                  color: AppColors.appDarkGreenColor)
           ],
         ),
       ),
