@@ -54,6 +54,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
           var cubit = context.read<BusinessOwnerHomeCubit>();
           return Scaffold(
             body: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -62,7 +63,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Hi 👋,John', // TODO : Dummy data
+                        'Hi 👋, John', // TODO : Dummy data
                         style: AppStyles.style20
                             .copyWith(fontWeight: FontWeight.w700),
                       ),
@@ -195,7 +196,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                   ).height(200),
                   20.heightBox,
                 ],
-              ).pSymmetric(horizontal: 16),
+              ),
             ),
           );
         },
