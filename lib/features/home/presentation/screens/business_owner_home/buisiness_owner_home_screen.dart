@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
+import 'package:viksera/config/routes/routes.dart';
 import 'package:viksera/config/typography/app_styles.dart';
 import 'package:viksera/core/common_widgets/custom_text_field.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
@@ -11,8 +12,7 @@ import 'package:viksera/features/home/presentation/cubits/business_owner_home/bu
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/category_card.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/influencer_card.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/marketing_agency_card.dart';
-
-import '../../cubits/buisiness_owner_search/business_owner_search_cubit.dart';
+import 'package:go_router/go_router.dart';
 
 class BusinessOwnerHomeScreen extends StatelessWidget {
   const BusinessOwnerHomeScreen({super.key});
@@ -47,20 +47,16 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => BusinessOwnerHomeCubit()), 
-        BlocProvider(create: (context) => BusinessOwnerSearchCubit()),
-      ],
+    return BlocProvider(
+      create: (context) => BusinessOwnerHomeCubit(),
       child: BlocBuilder<BusinessOwnerHomeCubit, BusinessOwnerHomeState>(
         buildWhen: (p, c) =>
             p.status != c.status || p.bannerIndex != c.bannerIndex,
         builder: (context, state) {
-          var homeCubit = context.read<BusinessOwnerHomeCubit>();
-          var searchCubit = context.read<BusinessOwnerSearchCubit>(); 
-          
+          var cubit = context.read<BusinessOwnerHomeCubit>();
           return Scaffold(
             body: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -69,7 +65,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Hi 👋,John', // TODO : Dummy data
+                        'Hi 👋, John', // TODO : Dummy data
                         style: AppStyles.style20
                             .copyWith(fontWeight: FontWeight.w700),
                       ),
@@ -91,8 +87,12 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                         onSubmitted: (value, cubit) {
                           // TODO : Need implement function
                         },
-                        prefixIcon: const Icon(Icons.search,
-                            color: AppColors.appDarkGreenColor),
+                        prefixIcon: GestureDetector(
+                          onTap: () => context
+                              .goNamed(Routes.searchFromBusinessOwnerHome),
+                          child: const Icon(Icons.search,
+                              color: AppColors.appDarkGreenColor),
+                        ),
                         hintText: 'Search',
                         boxShadow: true,
                       ).expanded(),
@@ -106,9 +106,8 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                       13.widthBox,
                       WidgetHelper.squareIconButton(
                         icon: Icons.settings,
-                        onTap: () {
-                          /// TODO : Need to implement function
-                        },
+                        onTap: () => context
+                            .goNamed(Routes.settingsFromBusinessOwnerHome),
                       )
                     ],
                   ),
@@ -202,7 +201,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                   ).height(200),
                   20.heightBox,
                 ],
-              ).pSymmetric(horizontal: 16),
+              ),
             ),
           );
         },

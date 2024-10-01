@@ -5,10 +5,9 @@ import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/core/widget_helper/widget_helper.dart';
 import '../../../../../core/common_widgets/custom_text_field.dart';
 import '../../cubits/buisiness_owner_search/business_owner_search_cubit.dart';
-import '../../cubits/business_owner_search_filter/business_owner_search_filter_cubit.dart';
-import '../../widgets/filter_sidebar.dart';
-import '../../widgets/influencers_grid.dart';
-import '../../widgets/marketing_agencies_grid.dart';
+import 'widgets/filter_sidebar.dart';
+import 'widgets/influencers_grid.dart';
+import 'widgets/marketing_agencies_grid.dart';
 
 //! This is the business owner search screen came when BusinessOwner clicks on search icon in the BusinessOwnerHomeScreen
 class BusinessOwnerSearchScreen extends StatelessWidget {
@@ -16,15 +15,8 @@ class BusinessOwnerSearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => BusinessOwnerSearchCubit(),
-        ),
-        BlocProvider(
-          create: (context) => BusinessOwnerSearchFilterCubit(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => BusinessOwnerSearchCubit(),
       child: DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -50,7 +42,12 @@ class BusinessOwnerSearchScreen extends StatelessWidget {
                     onTap: () {
                       Scaffold.of(context).openDrawer();
                     },
-                    child: WidgetHelper.squareIcon(icon: Icons.tune),
+                    child: WidgetHelper.squareIconButton(
+                      icon: Icons.tune,
+                      onTap: () {
+                        // TODO : Need to implement
+                      },
+                    ),
                   ),
                 ),
               ),

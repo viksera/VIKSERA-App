@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
-import 'package:viksera/features/home/presentation/widgets/business_profile_card.dart';
 
-import '../../domain/entities/business_profile.dart';
+import '../../../../domain/entities/business_profile.dart';
+import 'business_profile_card.dart';
 
 class MarketingAgenciesGrid extends StatelessWidget {
   const MarketingAgenciesGrid({super.key});

@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 
-import '../../../../core/widget_helper/widget_helper.dart';
-import '../../domain/entities/business_profile.dart';
+import '../../../../../../core/widget_helper/widget_helper.dart';
+import '../../../../domain/entities/business_profile.dart';
 
 //!BusinessProfileCard is to represent an individual influencer or marketing agency profile
 
