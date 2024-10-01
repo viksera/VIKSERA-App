@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/typography/app_styles.dart';
 import 'package:viksera/core/common_widgets/custom_text_field.dart';
@@ -11,6 +11,8 @@ import 'package:viksera/features/home/presentation/cubits/business_owner_home/bu
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/category_card.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/influencer_card.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/marketing_agency_card.dart';
+
+import '../../cubits/buisiness_owner_search/business_owner_search_cubit.dart';
 
 class BusinessOwnerHomeScreen extends StatelessWidget {
   const BusinessOwnerHomeScreen({super.key});
@@ -45,13 +47,18 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BusinessOwnerHomeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => BusinessOwnerHomeCubit()), 
+        BlocProvider(create: (context) => BusinessOwnerSearchCubit()),
+      ],
       child: BlocBuilder<BusinessOwnerHomeCubit, BusinessOwnerHomeState>(
         buildWhen: (p, c) =>
             p.status != c.status || p.bannerIndex != c.bannerIndex,
         builder: (context, state) {
-          var cubit = context.read<BusinessOwnerHomeCubit>();
+          var homeCubit = context.read<BusinessOwnerHomeCubit>();
+          var searchCubit = context.read<BusinessOwnerSearchCubit>(); 
+          
           return Scaffold(
             body: SingleChildScrollView(
               child: Column(
