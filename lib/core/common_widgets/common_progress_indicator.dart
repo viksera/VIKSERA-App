@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 
 import '../../config/colors/app_colors.dart';
@@ -20,6 +21,6 @@ class CommonCircularProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) => Center(
         child: CircularProgressIndicator(
                 strokeWidth: 1.5, value: progress, color: color)
-            .widthHeight(radius / 2, radius / 2),
+            .widthHeight(radius.w / 2, radius.w / 2),
       );
 }

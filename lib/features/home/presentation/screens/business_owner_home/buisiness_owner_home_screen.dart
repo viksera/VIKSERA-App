@@ -13,6 +13,7 @@ import 'package:viksera/features/home/presentation/screens/business_owner_home/w
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/influencer_card.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/marketing_agency_card.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BusinessOwnerHomeScreen extends StatelessWidget {
   const BusinessOwnerHomeScreen({super.key});
@@ -56,7 +57,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
           var cubit = context.read<BusinessOwnerHomeCubit>();
           return Scaffold(
             body: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -69,9 +70,9 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                         style: AppStyles.style20
                             .copyWith(fontWeight: FontWeight.w700),
                       ),
-                      const CircleAvatar(
-                        radius: 20,
-                        backgroundImage: CachedNetworkImageProvider(
+                      CircleAvatar(
+                        radius: 20.r,
+                        backgroundImage: const CachedNetworkImageProvider(
                             'https://images.pexels.com/photos/943084/pexels-photo-943084.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'), // TODO: Dummy data
                       )
                     ],
@@ -90,8 +91,8 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                         prefixIcon: GestureDetector(
                           onTap: () => context
                               .goNamed(Routes.searchFromBusinessOwnerHome),
-                          child: const Icon(Icons.search,
-                              color: AppColors.appDarkGreenColor),
+                          child: Icon(Icons.search,
+                              size: 18.sp, color: AppColors.appDarkGreenColor),
                         ),
                         hintText: 'Search',
                         boxShadow: true,
@@ -125,7 +126,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                               autoPlay: true,
                               enlargeCenterPage: true,
                               viewportFraction: 1,
-                              height: 185),
+                              height: 185.w),
                           itemBuilder: (context, index, realIndex) => Container(
                             decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -133,9 +134,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                                         banners[index]),
                                     fit: BoxFit.fill),
                                 color: AppColors.appPrimaryColor,
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                )),
+                                borderRadius: BorderRadius.circular(10.r)),
                             width: context.width,
                           ),
                         ),
@@ -144,15 +143,16 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                           children: [
                             for (int i = 0; i < banners.length; i++)
                               Container(
-                                      width: state.bannerIndex == i ? 25 : 10,
+                                      width:
+                                          state.bannerIndex == i ? 25.w : 10.w,
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(10),
+                                              BorderRadius.circular(10.r),
                                           color: Colors.white),
-                                      height: 10)
+                                      height: 10.w)
                                   .pAll(3)
                           ],
-                        ).positioned(bottom: 10)
+                        ).positioned(bottom: 10.w)
                       ]),
                   24.heightBox,
                   Text(
@@ -176,7 +176,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                   ),
                   16.heightBox,
                   ListView.separated(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
                     controller: influencerPicksForYouController,
                     separatorBuilder: (_, __) => 10.widthBox,
                     scrollDirection: Axis.horizontal,
@@ -192,7 +192,7 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                   16.heightBox,
                   ListView.separated(
                     controller: marketingAgenciesController,
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
                     separatorBuilder: (_, __) => 10.widthBox,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) =>
