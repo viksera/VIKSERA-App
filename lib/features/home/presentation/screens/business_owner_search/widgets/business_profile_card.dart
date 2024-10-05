@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/config/colors/app_colors.dart';
+import 'package:viksera/core/common_widgets/common_progress_indicator.dart';
+import 'package:viksera/core/extensions/app_extensions.dart';
 
 import '../../../../../../core/widget_helper/widget_helper.dart';
 import '../../../../domain/entities/business_profile.dart';
@@ -29,9 +32,9 @@ class BusinessProfileCard extends StatelessWidget {
               errorWidget: (context, url, error) => const Icon(Icons.error),
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12.r),
+                    topRight: Radius.circular(12.r),
                   ),
                   image:
                       DecorationImage(image: imageProvider, fit: BoxFit.cover),
@@ -40,7 +43,7 @@ class BusinessProfileCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -48,30 +51,30 @@ class BusinessProfileCard extends StatelessWidget {
                   profile.name,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 4),
+                4.heightBox,
                 if (profile.type == 'Influencer')
                   Row(
                     children: [
-                      const Icon(Icons.remove_red_eye, size: 16),
-                      const SizedBox(width: 4),
+                      Icon(Icons.remove_red_eye, size: 16.sp),
+                      4.widthBox,
                       Text('${profile.views} views'),
                     ],
                   ),
-                const SizedBox(height: 4),
+                4.heightBox,
                 if (profile.type == 'Influencer')
                   Row(
                     children: [
-                      const Icon(Icons.camera_alt, size: 16),
-                      const SizedBox(width: 4),
+                      Icon(Icons.camera_alt, size: 16.sp),
+                      4.widthBox,
                       Text('@${profile.description}'),
                     ],
                   ),
                 if (profile.type == 'Marketing Agency')
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.star, size: 16, color: AppColors.pureBlack),
-                      SizedBox(width: 4),
-                      Text('Rating: 4.5 stars'),
+                      Icon(Icons.star, size: 16.sp, color: AppColors.pureBlack),
+                      4.widthBox,
+                      const Text('Rating: 4.5 stars'),
                     ],
                   ),
               ],

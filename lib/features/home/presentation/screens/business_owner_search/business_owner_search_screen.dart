@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/core/widget_helper/widget_helper.dart';
@@ -36,7 +37,7 @@ class BusinessOwnerSearchScreen extends StatelessWidget {
             ),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: EdgeInsets.only(right: 8.0.w),
                 child: Builder(
                   builder: (context) => GestureDetector(
                     onTap: () {
@@ -53,42 +54,42 @@ class BusinessOwnerSearchScreen extends StatelessWidget {
               ),
             ],
             bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(110),
+              preferredSize: Size.fromHeight(110.w),
               child: Column(
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                       child: Text(
                         'Travel > Found 250 Influencers', //TODO Placeholder text will be replaced with actual data
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: context.isWeb
-                              ? 20
+                              ? 20.sp
                               : context.isIPad
-                                  ? 18
-                                  : 16,
+                                  ? 18.sp
+                                  : 16.sp,
                         ),
-                      ).pOnly(bottom: 16),
+                      ).pOnly(bottom: 16.w),
                     ),
                   ),
                   Container(
-                    height: 60,
-                    decoration: const BoxDecoration(
+                    height: 60.w,
+                    decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(10),
-                        bottom: Radius.circular(10),
+                        top: Radius.circular(10.r),
+                        bottom: Radius.circular(10.r),
                       ),
                     ),
                     child: TabBar(
-                      indicatorPadding: const EdgeInsets.only(top: 50),
+                      indicatorPadding: EdgeInsets.only(top: 50.w),
                       indicatorSize: TabBarIndicatorSize.tab,
-                      indicator: const BoxDecoration(
+                      indicator: BoxDecoration(
                         color: AppColors.appPrimaryColor,
                         borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(12),
+                          top: Radius.circular(12.r),
                         ),
                       ),
                       labelColor: AppColors.pureBlack,
@@ -96,7 +97,7 @@ class BusinessOwnerSearchScreen extends StatelessWidget {
                       labelStyle:
                           Theme.of(context).textTheme.labelLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                               ),
                       tabs: const [
                         Tab(text: 'Influencers'),
@@ -109,15 +110,15 @@ class BusinessOwnerSearchScreen extends StatelessWidget {
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16.w),
             child: Column(
               children: [
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.appBackgroundColor,
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(20),
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20.r),
                       ),
                       boxShadow: [
                         BoxShadow(

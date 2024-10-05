@@ -4,6 +4,7 @@ import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/typography/app_styles.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/core/widget_helper/widget_helper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MarketingAgencyCard extends StatelessWidget {
   const MarketingAgencyCard({super.key});
@@ -11,16 +12,17 @@ class MarketingAgencyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 161,
+      width: 161.w,
       decoration: WidgetHelper.cardDecoration(),
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(10), topLeft: Radius.circular(10)),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10.r),
+                topLeft: Radius.circular(10.r)),
             child: CachedNetworkImage(
                 fit: BoxFit.cover,
-                height: 110,
+                height: 110.w,
                 imageUrl:
                     'https://vimm.com/wp-content/uploads/2018/07/Agency-sign-1536x768.jpeg'), // TODO : Dummy data
           ),
@@ -37,22 +39,22 @@ class MarketingAgencyCard extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Row(
+                  Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
                         Icons.star,
-                        size: 15,
+                        size: 15.sp,
                         color: AppColors.appYellowColor,
                       ),
                       Icon(
                         Icons.star,
-                        size: 15,
+                        size: 15.sp,
                         color: AppColors.appYellowColor,
                       ),
                       Icon(
                         Icons.star,
-                        size: 15,
+                        size: 15.sp,
                         color: AppColors.appYellowColor,
                       ),
                     ],

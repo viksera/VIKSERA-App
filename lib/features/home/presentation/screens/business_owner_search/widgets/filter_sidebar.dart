@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/features/home/presentation/cubits/buisiness_owner_search/business_owner_search_cubit.dart';
@@ -15,23 +16,23 @@ class FilterSidebar extends StatelessWidget {
 
         return Drawer(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
-                const Text(
+                40.heightBox,
+                Text(
                   'FILTERS',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     color: AppColors.pureBlack,
                   ),
                 ).pOnly(bottom: 10),
-                const Text(
+                Text(
                   'Categories',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -45,10 +46,11 @@ class FilterSidebar extends StatelessWidget {
                     _buildCheckbox('Clothing', context),
                   ],
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                16.heightBox,
+                Text(
                   'Price',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
                 ).pOnly(bottom: 8),
                 RangeSlider(
                   values: RangeValues(state.minPrice, state.maxPrice),
@@ -67,8 +69,8 @@ class FilterSidebar extends StatelessWidget {
                 ),
                 Text(
                   '₹${state.minPrice.round()} - ₹${state.maxPrice.round()}',
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.pureBlack,
                   ),
@@ -76,8 +78,8 @@ class FilterSidebar extends StatelessWidget {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.appPrimaryColor,
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    minimumSize: const Size.fromHeight(48),
+                    padding: EdgeInsets.symmetric(vertical: 16.0.w),
+                    minimumSize: Size.fromHeight(48.w),
                   ),
                   onPressed: () {
                     Navigator.pop(context);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import 'package:motion_tab_bar/MotionTabBarController.dart';
 import 'package:viksera/config/colors/app_colors.dart';
@@ -28,8 +29,8 @@ class BottomNavigation extends StatelessWidget {
             body: child,
             bottomNavigationBar: MotionTabBar(
               controller: motionTabBarController,
-              tabSize: 40,
-              tabBarHeight: 60,
+              tabSize: 40.sp,
+              tabBarHeight: 60.w,
               initialSelectedTab: "HOME",
               tabSelectedColor: AppColors.appDarkGreenColor,
               labels: const ["HOME", "CATEGORIES", "CHAT", "SETTINGS"],

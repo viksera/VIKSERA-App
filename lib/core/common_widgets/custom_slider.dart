@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/common_widgets/custom_slider_track_shape.dart';
 
@@ -28,7 +29,7 @@ class CustomSlider extends StatelessWidget {
           thumbShape: SliderComponentShape.noThumb,
           activeTrackColor: activeTrackColor,
           inactiveTrackColor: inactiveTrackColor,
-          trackHeight: 18.0,
+          trackHeight: 18.0.w,
           trackShape: CustomSliderTrackShape(),
           overlayShape: SliderComponentShape.noOverlay,
         ),
