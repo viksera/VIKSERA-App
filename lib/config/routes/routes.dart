@@ -7,6 +7,7 @@ import 'package:viksera/features/home/presentation/bottom_navigation.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/buisiness_owner_home_screen.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_search/business_owner_search_screen.dart';
 import 'package:viksera/features/home/presentation/screens/influencer_home/influencer_home_screen.dart';
+import 'package:viksera/features/home/presentation/screens/influencer_profile/influencer_profile_screen.dart';
 import 'package:viksera/features/settings/presentation/screens/settings/settings_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -95,6 +96,12 @@ final GoRouter router = GoRouter(
           name: Routes.influencerSettings,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: SettingsScreen()),
+        ),
+        GoRoute(
+          path: '/influencer-profile',
+          name: Routes.influencerProfile,
+          pageBuilder: (context, state) =>
+              NoTransitionPage(child: InfluencerProfileScreen()),
         )
       ],
     )
@@ -119,4 +126,5 @@ class Routes {
   static const influencerSettings = 'influencer_settings';
   static const influencerCategories = 'influencer_categories';
   static const influencerChats = 'influencer_chats';
+  static const influencerProfile = 'influencer_profile';
 }

@@ -86,6 +86,9 @@ class BusinessOwnerHomeScreen extends StatelessWidget {
                             cubit.onSearchTextChanged(value),
                         onSubmitted: (value, cubit) {
                           // TODO : Need implement function
+                          GoRouter.of(context).goNamed(
+                            Routes.searchFromBusinessOwnerHome,
+                          );
                         },
                         prefixIcon: GestureDetector(
                           onTap: () => context
