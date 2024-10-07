@@ -18,6 +18,10 @@ class InfluencerProfileCubit extends Cubit<InfluencerProfileState> {
         postImages: [
           'https://tse1.mm.bing.net/th?id=OIP.XK0XJsd_h9qS7CU9WGvtUAHaFE&pid=Api&P=0&h=180',
           'https://tse1.mm.bing.net/th?id=OIP.XK0XJsd_h9qS7CU9WGvtUAHaFE&pid=Api&P=0&h=180',
+          'https://tse1.mm.bing.net/th?id=OIP.XK0XJsd_h9qS7CU9WGvtUAHaFE&pid=Api&P=0&h=180',
+          'https://tse1.mm.bing.net/th?id=OIP.XK0XJsd_h9qS7CU9WGvtUAHaFE&pid=Api&P=0&h=180',
+          'https://tse1.mm.bing.net/th?id=OIP.XK0XJsd_h9qS7CU9WGvtUAHaFE&pid=Api&P=0&h=180',
+          'https://tse1.mm.bing.net/th?id=OIP.XK0XJsd_h9qS7CU9WGvtUAHaFE&pid=Api&P=0&h=180',
         ],
         similarInfluencers: [],
         profileImage:
