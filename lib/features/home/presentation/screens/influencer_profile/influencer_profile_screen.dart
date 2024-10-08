@@ -32,18 +32,18 @@ class InfluencerProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ProfileHeader(profile: profile).pSymmetric(horizontal: 20),
-                    20.heightBox,
                     PostsGrid(posts: profile.postImages)
                         .pSymmetric(horizontal: 20),
                     20.heightBox,
                     Ratings(profile: profile).pSymmetric(horizontal: 20),
-                    20.heightBox,
+                    10.heightBox,
                     Text(
                       "Similar influencers",
                       style: AppStyles.style18.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ).pOnly(left: 20),
+                    20.heightBox,
                   ],
                 ),
               );

@@ -28,7 +28,7 @@ class ProfileHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildProfileStat('Type', profile.type),
-            _buildProfileStat('Popularity', '${profile.popularity}'),
+            _buildProfileStat('Popularity', _formatNumber(profile.popularity)),
             _buildProfileStat('Rating', '${profile.rating} ⭐'),
           ],
         ),
@@ -64,6 +64,15 @@ class ProfileHeader extends StatelessWidget {
         )
       ],
     );
+  }
+
+  String _formatNumber(int number) {
+    if (number >= 1000000) {
+      return '${(number / 1000000).toStringAsFixed(1)}M';
+    } else if (number >= 1000) {
+      return '${(number / 1000).toStringAsFixed(1)}K';
+    }
+    return number.toString();
   }
 
   Widget _buildProfileStat(String label, String value) {

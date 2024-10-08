@@ -13,7 +13,7 @@ class InfluencerProfileCubit extends Cubit<InfluencerProfileState> {
         name: 'Liza Summer',
         bio: 'Hey guys... I will help you to grow your business',
         type: 'Food & Drinks',
-        popularity: 10,
+        popularity: 100000,
         rating: 5.0,
         postImages: [
           'https://tse1.mm.bing.net/th?id=OIP.XK0XJsd_h9qS7CU9WGvtUAHaFE&pid=Api&P=0&h=180',

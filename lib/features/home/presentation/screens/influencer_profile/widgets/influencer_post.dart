@@ -9,43 +9,40 @@ class PostsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Posts',
-                style: AppStyles.style18.copyWith(fontWeight: FontWeight.bold),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text('See More'),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: posts.isEmpty ? 0 : 300,
-            child: GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 5.0,
-                mainAxisSpacing: 5.0,
-              ),
-              itemCount: posts.length,
-              itemBuilder: (context, index) {
-                return CachedNetworkImage(
-                    imageUrl: posts[index], fit: BoxFit.cover);
-              },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Posts',
+              style: AppStyles.style18.copyWith(fontWeight: FontWeight.bold),
             ),
+            TextButton(
+              onPressed: () {},
+              child: const Text('See More'),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: posts.isEmpty ? 0 : 250,
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 5.0,
+              mainAxisSpacing: 5.0,
+            ),
+            itemCount: posts.length,
+            itemBuilder: (context, index) {
+              return CachedNetworkImage(
+                  imageUrl: posts[index], fit: BoxFit.cover);
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
