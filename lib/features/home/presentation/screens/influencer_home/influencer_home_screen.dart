@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/typography/app_styles.dart';
@@ -12,7 +13,6 @@ import 'package:viksera/features/home/presentation/screens/influencer_home/widge
 import 'package:viksera/features/home/presentation/screens/influencer_home/widgets/business_owner_card.dart';
 import 'package:viksera/features/home/presentation/screens/influencer_home/widgets/opportunity_card.dart';
 import 'package:viksera/features/home/presentation/screens/influencer_home/widgets/visibility_card.dart';
-
 import '../../../../../config/routes/routes.dart';
 
 class InfluencerHomeScreen extends StatelessWidget {
@@ -27,7 +27,7 @@ class InfluencerHomeScreen extends StatelessWidget {
           var cubit = context.read<InfluencerHomeCubit>();
           return Scaffold(
             body: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -41,12 +41,12 @@ class InfluencerHomeScreen extends StatelessWidget {
                             .copyWith(fontWeight: FontWeight.w700),
                       ),
                       GestureDetector(
-                        child: const CircleAvatar(
-                          radius: 20,
-                          backgroundImage: CachedNetworkImageProvider(
+                        onTap: () => context.goNamed(Routes.influencerProfile),
+                        child: CircleAvatar(
+                          radius: 20.r,
+                          backgroundImage: const CachedNetworkImageProvider(
                               'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600'), // TODO: Dummy data
                         ),
-                        onTap: () => context.goNamed(Routes.influencerProfile),
                       )
                     ],
                   ),
@@ -107,9 +107,9 @@ class InfluencerHomeScreen extends StatelessWidget {
                   ),
                   8.heightBox,
                   ListView.separated(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.all(8.w),
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => BusinessOwnerCard(),
+                    itemBuilder: (context, index) => const BusinessOwnerCard(),
                     itemCount: 4,
                     separatorBuilder: (_, __) => 10.widthBox,
                   ).height(174),
@@ -131,9 +131,9 @@ class InfluencerHomeScreen extends StatelessWidget {
                   ),
                   8.heightBox,
                   ListView.separated(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.all(8.w),
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => BusinessOwnerCard(),
+                    itemBuilder: (context, index) => const BusinessOwnerCard(),
                     itemCount: 4,
                     separatorBuilder: (_, __) => 10.widthBox,
                   ).height(174),

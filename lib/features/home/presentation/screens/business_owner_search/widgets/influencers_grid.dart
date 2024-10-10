@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/features/home/domain/entities/business_profile.dart';
 import 'business_profile_card.dart';
@@ -24,8 +25,8 @@ class InfluencersGrid extends StatelessWidget {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: context.isLargeScreen ? 4 : 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
+        crossAxisSpacing: 16.w,
+        mainAxisSpacing: 16.w,
         childAspectRatio: 0.9,
       ),
       itemCount: businessProfiles.length,

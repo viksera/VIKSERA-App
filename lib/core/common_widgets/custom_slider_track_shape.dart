@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSliderTrackShape extends RoundedRectSliderTrackShape {
   @override
@@ -15,7 +16,7 @@ class CustomSliderTrackShape extends RoundedRectSliderTrackShape {
         offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width;
 
-    return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
+    return Rect.fromLTWH(trackLeft.w, trackTop.w, trackWidth.w, trackHeight.w);
   }
 
   @override
@@ -46,7 +47,7 @@ class CustomSliderTrackShape extends RoundedRectSliderTrackShape {
       sliderTheme: sliderTheme,
     );
 
-    const Radius cornerRadius = Radius.circular(6);
+    Radius cornerRadius = Radius.circular(6.r);
 
     final Rect leftActiveTrackSegment = Rect.fromLTRB(
       trackRect.left,

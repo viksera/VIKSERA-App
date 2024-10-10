@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/typography/app_styles.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryCard extends StatelessWidget {
   final String title;
@@ -12,12 +13,12 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      width: 121,
-      height: 100,
+      padding: EdgeInsets.all(10.w),
+      width: 121.w,
+      height: 100.w,
       decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           image: const DecorationImage(
               fit: BoxFit.cover,
               image: CachedNetworkImageProvider(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/config/typography/app_styles.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/features/home/presentation/screens/business_owner_home/widgets/category_card.dart';
@@ -25,7 +26,7 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -35,12 +36,12 @@ class CategoriesScreen extends StatelessWidget {
               style: AppStyles.style34.copyWith(fontWeight: FontWeight.w600),
             ),
             GridView.builder(
-              padding: const EdgeInsets.only(top: 16),
+              padding: EdgeInsets.only(top: 16.w),
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: context.isLargeScreen ? 4 : 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
+                crossAxisSpacing: 10.w,
+                mainAxisSpacing: 10.w,
                 childAspectRatio: 1.6,
               ),
               shrinkWrap: true,

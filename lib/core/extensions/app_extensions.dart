@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension MediaQueryExt on BuildContext {
   Size get mqSize => MediaQuery.sizeOf(this);
@@ -32,30 +33,30 @@ extension PaddingExt on Widget {
   }) =>
       Padding(
         key: key,
-        padding:
-            EdgeInsets.only(top: top, left: left, bottom: bottom, right: right),
+        padding: EdgeInsets.only(
+            top: top.w, left: left.w, bottom: bottom.w, right: right.w),
         child: this,
       );
 
   Padding pSymmetric({Key? key, double horizontal = 0, double vertical = 0}) =>
       Padding(
         key: key,
-        padding:
-            EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
+        padding: EdgeInsets.symmetric(
+            vertical: vertical.w, horizontal: horizontal.w),
         child: this,
       );
 }
 
 extension SizeBoxEx on num {
-  Widget get widthBox => SizedBox(width: toDouble());
+  Widget get widthBox => SizedBox(width: toDouble().w);
 
-  Widget get heightBox => SizedBox(height: toDouble());
+  Widget get heightBox => SizedBox(height: toDouble().w);
 }
 
 extension SizedBoxExtension on Widget {
   Widget width(double width, {Key? key}) => SizedBox(
         key: key,
-        width: width,
+        width: width.w,
         child: this,
       );
 
@@ -67,7 +68,7 @@ extension SizedBoxExtension on Widget {
 
   Widget height(double height) => SizedBox(
         key: key,
-        height: height,
+        height: height.w,
         child: this,
       );
 
@@ -79,8 +80,8 @@ extension SizedBoxExtension on Widget {
 
   Widget widthHeight(double width, double height) => SizedBox(
         key: key,
-        width: width,
-        height: height,
+        width: width.w,
+        height: height.w,
         child: this,
       );
 
