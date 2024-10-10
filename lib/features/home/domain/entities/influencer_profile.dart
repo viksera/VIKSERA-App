@@ -6,7 +6,7 @@ class InfluencerProfile {
   final int popularity;
   final double rating;
   final List<String> postImages;
-  final List<String> similarInfluencers;
+  final List<InfluencerProfile> similarInfluencers;
 
   InfluencerProfile({
     required this.profileImage,

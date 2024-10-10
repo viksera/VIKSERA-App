@@ -1,32 +1,25 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:viksera/config/typography/app_styles.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:viksera/core/extensions/app_extensions.dart';
 
-class PostsGrid extends StatelessWidget {
+import '../../../../../../config/typography/app_styles.dart';
+
+class InfluencerPostsWidget extends StatelessWidget {
   final List<String> posts;
 
-  const PostsGrid({super.key, required this.posts});
+  InfluencerPostsWidget({required this.posts});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Posts',
-              style: AppStyles.style18.copyWith(fontWeight: FontWeight.bold),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: const Text('See More'),
-            ),
-          ],
-        ),
+        Text('Posts',
+            style: AppStyles.style18.copyWith(fontWeight: FontWeight.bold)),
+        10.heightBox,
         SizedBox(
-          height: posts.isEmpty ? 0 : 250,
+          height: posts.isEmpty ? 0 : 250.h,
           child: GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

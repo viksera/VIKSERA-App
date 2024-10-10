@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import '../../../../../../config/colors/app_colors.dart';
 import '../../../../../../config/typography/app_styles.dart';
@@ -16,12 +17,13 @@ class ProfileHeader extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          radius: 50,
+          radius: 60.r,
           backgroundImage: CachedNetworkImageProvider(profile.profileImage),
           backgroundColor: Colors.transparent,
         ).pSymmetric(vertical: 10),
         Text(profile.name,
             style: AppStyles.style20.copyWith(fontWeight: FontWeight.bold)),
+        10.heightBox,
         Text(profile.bio, style: AppStyles.style16),
         30.heightBox,
         Row(
@@ -42,24 +44,17 @@ class ProfileHeader extends StatelessWidget {
                 backgroundColor: AppColors.appPrimaryColor,
                 textStyle: AppStyles.style16,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(15.r),
                 ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 70, vertical: 15),
+                padding: EdgeInsets.symmetric(horizontal: 70.w, vertical: 15.h),
               ),
               child:
                   const Text('Message', style: TextStyle(color: Colors.white)),
             ),
             20.widthBox,
-            WidgetHelper.squareIconButton(
-              icon: Icons.phone,
-              onTap: () {},
-            ),
+            WidgetHelper.squareIconButton(icon: Icons.phone, onTap: () {}),
             20.widthBox,
-            WidgetHelper.squareIconButton(
-              icon: Icons.share,
-              onTap: () {},
-            ),
+            WidgetHelper.squareIconButton(icon: Icons.share, onTap: () {}),
           ],
         )
       ],
@@ -79,6 +74,7 @@ class ProfileHeader extends StatelessWidget {
     return Column(
       children: [
         Text(label, style: AppStyles.style14),
+        5.heightBox,
         Text(value,
             style: AppStyles.style16.copyWith(fontWeight: FontWeight.bold)),
       ],
