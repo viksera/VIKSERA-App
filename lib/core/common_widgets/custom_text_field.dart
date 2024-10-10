@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/widget_helper/widget_helper.dart';
 
@@ -28,7 +29,7 @@ class CustomTextField<B extends StateStreamable<S>, S> extends StatelessWidget {
       this.boxShadow = false,
       this.prefixIcon,
       this.paddingX = 16,
-      this.paddingY = 8,
+      this.paddingY = 12,
       required this.hintText});
 
   @override
@@ -45,8 +46,12 @@ class CustomTextField<B extends StateStreamable<S>, S> extends StatelessWidget {
             decoration: InputDecoration(
               hintText: hintText,
               errorText: errorText,
+              isDense: true,
+              prefixIconConstraints:
+                  BoxConstraints(minHeight: 48.w, minWidth: 48.w),
               prefixIcon: prefixIcon,
-              contentPadding: EdgeInsets.symmetric(horizontal: paddingX),
+              contentPadding: EdgeInsets.symmetric(
+                  horizontal: paddingX.w, vertical: paddingY.w),
             ),
             onChanged: (value) => onChanged?.call(value, context.read<B>()),
             onTapOutside: (event) => FocusScope.of(context).unfocus(),

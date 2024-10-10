@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/constants/app_assets.dart';
@@ -11,11 +12,11 @@ class AiInsightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.w),
       width: double.infinity,
       decoration: BoxDecoration(
           color: AppColors.appBackgroundColor,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           border:
               Border.all(color: AppColors.appDarkGreenColor.withOpacity(0.4))),
       child: Column(

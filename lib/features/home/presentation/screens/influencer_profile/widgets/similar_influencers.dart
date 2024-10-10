@@ -1,38 +1,41 @@
 import 'package:flutter/material.dart';
-import '../../../../domain/entities/influencer_profile.dart';
-import '../../business_owner_home/widgets/influencer_card.dart';
+import 'package:viksera/core/extensions/app_extensions.dart';
+import 'package:viksera/config/typography/app_styles.dart';
 
-class SimilarInfluencers extends StatelessWidget {
+import '../../../../domain/entities/influencer_profile.dart';
+
+class SimilarInfluencersWidget extends StatelessWidget {
   final List<InfluencerProfile> similarInfluencers;
 
-  const SimilarInfluencers({Key? key, required this.similarInfluencers})
+  const SimilarInfluencersWidget({Key? key, required this.similarInfluencers})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 20),
-          const Text('Similar Influencers',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 10),
-          SizedBox(
-            height: 120,
+    return similarInfluencers.isEmpty
+        ? Text('No similar influencers found.')
+        : SizedBox(
+            height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: similarInfluencers.length,
               itemBuilder: (context, index) {
-                return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.0),
-                    child: InfluencerCard());
+                final influencer = similarInfluencers[index];
+                return Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundImage: NetworkImage(influencer.profileImage),
+                    ),
+                    10.heightBox,
+                    Text(
+                      influencer.name,
+                      style: AppStyles.style14,
+                    ),
+                  ],
+                ).pSymmetric(horizontal: 10);
               },
             ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 }

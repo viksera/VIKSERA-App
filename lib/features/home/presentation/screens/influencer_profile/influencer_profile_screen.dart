@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
+import 'package:viksera/features/home/presentation/screens/influencer_profile/widgets/similar_influencers.dart';
 import '../../../../../config/typography/app_styles.dart';
 import '../../cubits/influencer_profile/influencer_profile_cubit.dart';
 import '../../cubits/influencer_profile/influencer_profile_state.dart';
@@ -32,7 +33,7 @@ class InfluencerProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ProfileHeader(profile: profile).pSymmetric(horizontal: 20),
-                    PostsGrid(posts: profile.postImages)
+                    InfluencerPostsWidget(posts: profile.postImages)
                         .pSymmetric(horizontal: 20),
                     20.heightBox,
                     Ratings(profile: profile).pSymmetric(horizontal: 20),
@@ -43,6 +44,9 @@ class InfluencerProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ).pOnly(left: 20),
+                    20.heightBox,
+                    SimilarInfluencersWidget(
+                        similarInfluencers: profile.similarInfluencers),
                     20.heightBox,
                   ],
                 ),
