@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:viksera/config/colors/app_colors.dart';
 import 'package:viksera/config/typography/app_styles.dart';
-import 'package:viksera/core/common_widgets/common_progress_indicator.dart';
 import 'package:viksera/core/extensions/app_extensions.dart';
 import 'package:viksera/core/widget_helper/widget_helper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsButton extends StatelessWidget {
   final bool isLogout;
@@ -21,10 +21,10 @@ class SettingsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(10.r),
       onTap: onTap,
       child: Ink(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.w),
         decoration: WidgetHelper.cardDecoration(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,24 +32,29 @@ class SettingsButton extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(icon,
-                    color: isLogout
-                        ? AppColors.pureRed
-                        : AppColors.appDarkGreenColor),
+                Icon(
+                  icon,
+                  size: 18.sp,
+                  color: isLogout
+                      ? AppColors.pureRed
+                      : AppColors.appDarkGreenColor,
+                ),
                 23.widthBox,
                 Text(
                   text,
                   style: AppStyles.style18.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: isLogout
-                          ? AppColors.pureRed
-                          : AppColors.appDarkGreenColor),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
+                    color: isLogout
+                        ? AppColors.pureRed
+                        : AppColors.appDarkGreenColor,
+                  ),
                 )
               ],
             ),
             if (!isLogout)
-              const Icon(Icons.keyboard_arrow_right,
-                  color: AppColors.appDarkGreenColor)
+              Icon(Icons.keyboard_arrow_right,
+                  size: 18.sp, color: AppColors.appDarkGreenColor)
           ],
         ),
       ),
